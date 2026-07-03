@@ -1,37 +1,6 @@
 import ProductCard from "@/components/product/ProductCard";
+import { products } from "@/data/products";
 
-const products = [
-  {
-    title: "Premium Black Tee",
-    price: "₹999",
-    image: "/man.jpg",
-  },
-  {
-    title: "Elegant Kurthi",
-    price: "₹1499",
-    image: "/kurthi.jpg",
-  },
-  {
-    title: "Couple Collection",
-    price: "₹2499",
-    image: "/couple.jpg",
-  },
-  {
-    title: "Classic White Tee",
-    price: "₹899",
-    image: "/man.jpg",
-  },
-  {
-    title: "Premium Kurthi",
-    price: "₹1699",
-    image: "/kurthi.jpg",
-  },
-  {
-    title: "Matching Couple Set",
-    price: "₹2799",
-    image: "/couple.jpg",
-  },
-];
 
 export default function ShopPage() {
   return (
