@@ -6,18 +6,21 @@ const menuItems = ["Shop", "Men", "Women", "About", "Contact"];
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#262626] bg-[#0F0F0F]/90 backdrop-blur-xl">
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-10">
+
+      <div className="relative h-24 max-w-7xl mx-auto">
 
         {/* Logo */}
-        <Logo />
+        <div className="absolute left-2 top-1/2 -translate-y-1/2">
+          <Logo />
+        </div>
 
-        {/* Navigation */}
-        <nav className="hidden md:flex items-center gap-12">
+        {/* Center Navigation */}
+        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex items-center gap-12">
           {menuItems.map((item) => (
             <a
               key={item}
               href="#"
-              className="group relative text-sm uppercase tracking-[0.25em] text-white transition"
+              className="group relative text-sm uppercase tracking-[0.25em] text-white transition hover:text-[#D4AF37]"
             >
               {item}
 
@@ -27,7 +30,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Side */}
-        <div className="flex items-center gap-6">
+        <div className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-6">
 
           <Search
             size={20}
@@ -50,6 +53,7 @@ export default function Navbar() {
         </div>
 
       </div>
+
     </header>
   );
 }

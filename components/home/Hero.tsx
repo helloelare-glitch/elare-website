@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function Hero() {
   return (
     <section
@@ -53,13 +54,19 @@ export default function Hero() {
 
         {/* Right Side */}
 
-        <div className="hidden h-[650px] w-[480px] rounded-3xl border border-[#2A2A2A] bg-[#181818] lg:flex items-center justify-center">
+<div className="relative hidden h-[650px] w-[480px] overflow-hidden rounded-[36px] border border-[#2A2A2A] lg:block">
 
-          <span className="text-[#C8A34D] text-xl tracking-[0.4em]">
-            FASHION IMAGE
-          </span>
+  <Image
+    src="/fashionboth.jpg"
+    alt="ElAre Luxury Fashion"
+    fill
+    priority
+    className="object-cover transition duration-700 hover:scale-105"
+  />
 
-        </div>
+  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+
+</div>
 
       </div>
     </section>
