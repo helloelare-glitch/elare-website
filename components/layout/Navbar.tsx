@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import Logo from "../Logo";
 export default function Navbar() {
   return (
     <nav className="flex items-center justify-between border-b border-[#2A2A2A] bg-[#111111] px-8 py-5">
