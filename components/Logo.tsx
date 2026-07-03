@@ -1,7 +1,14 @@
+import Image from "next/image";
+
 export default function Logo() {
   return (
-    <h1 className="text-4xl font-bold tracking-tight text-[#0B1F3A]">
-      ElAre
-    </h1>
+    <Image
+      src="/logo.png"
+      alt="ElAre"
+      width={120}
+      height={120}
+      priority
+      className="h-14 w-auto"
+    />
   );
 }

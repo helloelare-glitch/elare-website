@@ -1,10 +1,10 @@
 import Logo from "./Logo";
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between border-b border-gray-200 px-8 py-5">
+    <nav className="flex items-center justify-between border-b border-[#2A2A2A] bg-[#111111] px-8 py-5">
       <Logo />
 
-      <div className="hidden gap-8 font-medium text-gray-700 md:flex">
+      <div className="hidden gap-8 font-medium text-white md:flex">
         <a href="#">Shop</a>
         <a href="#">Men</a>
         <a href="#">Women</a>
@@ -12,7 +12,7 @@ export default function Navbar() {
         <a href="#">Contact</a>
       </div>
 
-      <button className="rounded-md bg-[#0B1F3A] px-5 py-2 text-white">
+      <button className="rounded-md bg-[#C8A34D] px-5 py-2 font-semibold text-black transition hover:bg-[#d9b867]">
         Login
       </button>
     </nav>
