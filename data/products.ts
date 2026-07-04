@@ -33,8 +33,7 @@ export const products: Product[] = [
     price: 1499,
     discountPrice: 1399,
     images: [
-      "/kurthi.jpg",
-      "/women.jpg",
+      "/products/kurthi/Kurthi.jpg",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["Cream"],
@@ -53,8 +52,7 @@ export const products: Product[] = [
     price: 2499,
     discountPrice: 2299,
     images: [
-      "/couple.jpg",
-      "/couple.jpg",
+"/products/Couple/couple.jpg",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: ["Beige"],
@@ -142,8 +140,7 @@ images: [
   discountPrice: 2699,
 
   images: [
-    "/couple.jpg",
-    "/couple.jpg",
+"/products/Couple/couple.jpg",
   ],
 
   sizes: ["S", "M", "L", "XL"],
