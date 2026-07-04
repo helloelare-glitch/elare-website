@@ -2,24 +2,32 @@
 import ProductCard from "@/components/product/ProductCard";
 import { products } from "@/data/products";
 import { useState } from "react";
+import SearchBar from "@/components/search/SearchBar";
 
 export default function ShopPage() {
 
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProducts =
-    selectedCategory === "all"
-      ? products
-      : products.filter(
-          (product) => product.category === selectedCategory
-        );
+const filteredProducts = products.filter((product) => {
+  const matchesCategory =
+    selectedCategory === "all" ||
+    product.category === selectedCategory;
+
+  const matchesSearch =
+    product.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+  return matchesCategory && matchesSearch;
+});
 
   return (
     <main className="min-h-screen bg-[#0F0F0F] text-white">
       <section className="mx-auto max-w-7xl px-8 py-24">
 
         <p className="uppercase tracking-[0.35em] text-[#C8A34D]">
-          ElAre Collection
+          ElAre
         </p>
 
         <h1
@@ -32,6 +40,12 @@ export default function ShopPage() {
         <p className="mt-6 max-w-xl text-gray-400">
           Discover premium fashion crafted for every story.
         </p>
+        <div className="mt-10">
+        <SearchBar
+            value={searchQuery}
+            onChange={setSearchQuery}
+        />
+        </div>
 
         {/* Category Buttons */}
         <div className="mt-14 flex flex-wrap gap-4">
