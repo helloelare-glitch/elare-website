@@ -5,6 +5,7 @@ import {
   useContext,
   useState,
   ReactNode,
+  useEffect,
 } from "react";
 
 export type CartItem = {
@@ -37,6 +38,19 @@ export function CartProvider({
   children: ReactNode;
 }) {
   const [cart, setCart] = useState<CartItem[]>([]);
+  // Load cart from Local Storage
+useEffect(() => {
+  const savedCart = localStorage.getItem("elare-cart");
+
+  if (savedCart) {
+    setCart(JSON.parse(savedCart));
+  }
+}, []);
+
+// Save cart whenever it changes
+useEffect(() => {
+  localStorage.setItem("elare-cart", JSON.stringify(cart));
+}, [cart]);
 
   const addToCart = (item: CartItem) => {
     setCart((prev) => {
