@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,10 +32,20 @@ export default function RootLayout({
       className={`${inter.variable} ${cormorant.variable}`}
     >
       <body className="bg-[#0F0F0F] text-white antialiased">
-        <CartProvider>
-          {children}
-        </CartProvider>
-      </body>
+
+  <CartProvider>
+
+    {children}
+
+    <Toaster
+      position="bottom-right"
+      richColors
+      theme="dark"
+    />
+
+  </CartProvider>
+
+</body>
     </html>
   );
 }
