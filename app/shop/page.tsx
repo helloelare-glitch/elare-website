@@ -1,11 +1,9 @@
 import ProductCard from "@/components/product/ProductCard";
 import { products } from "@/data/products";
 
-
 export default function ShopPage() {
   return (
     <main className="min-h-screen bg-[#0F0F0F] text-white">
-
       <section className="mx-auto max-w-7xl px-8 py-24">
 
         <p className="uppercase tracking-[0.35em] text-[#C8A34D]">
@@ -24,9 +22,7 @@ export default function ShopPage() {
         </p>
 
         {/* Category Buttons */}
-
         <div className="mt-14 flex flex-wrap gap-4">
-
           <button className="rounded-full bg-[#C8A34D] px-6 py-3 text-black">
             All
           </button>
@@ -46,26 +42,22 @@ export default function ShopPage() {
           <button className="rounded-full border border-[#333] px-6 py-3 hover:border-[#C8A34D]">
             Couple
           </button>
-
         </div>
 
         {/* Products */}
-
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
           {products.map((product) => (
             <ProductCard
-              key={product.title}
-              image={product.image}
-              title={product.title}
-              price={product.price}
-            />
+  key={product.id}
+  slug={product.slug}
+  image={product.images[0]}
+  title={product.title}
+  price={product.discountPrice}
+/>
           ))}
-
         </div>
 
       </section>
-
     </main>
   );
 }
