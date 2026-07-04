@@ -36,7 +36,7 @@ export default function ProductActions({
       size: selectedSize,
     });
 
-    toast.custom((t) => (
+    toast.custom(() => (
   <div className="w-[360px] rounded-2xl border border-[#C8A34D] bg-[#111111] p-5 shadow-2xl">
 
     <div className="flex items-center gap-3">
