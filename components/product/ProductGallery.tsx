@@ -53,7 +53,7 @@ export default function ProductGallery({
           width={520}
           height={650}
           priority
-          className="h-[650px] w-full object-cover transition-all duration-500"
+         className="h-[650px] w-full object-cover object-top transition-all duration-500"
         />
 
       </div>

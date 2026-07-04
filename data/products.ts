@@ -80,7 +80,7 @@ export const products: Product[] = [
 
   images: [
     "/whitetee.jpg",
-    "/whitetee.jpg",
+    "/whitetees.jpg",
   ],
 
   sizes: ["S", "M", "L", "XL"],
