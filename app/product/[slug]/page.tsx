@@ -1,6 +1,6 @@
 import { products } from "@/data/products";
-import Image from "next/image";
 import { notFound } from "next/navigation";
+import ProductGallery from "@/components/product/ProductGallery";
 
 type Props = {
   params: Promise<{
@@ -20,77 +20,120 @@ export default async function ProductPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-[#0F0F0F] text-white">
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-8 py-20 lg:grid-cols-2">
+      <section className="mx-auto max-w-7xl px-8 py-20">
 
-        {/* Product Image */}
+        <div className="grid items-start gap-20 lg:grid-cols-[640px_520px]">
 
-        <div className="overflow-hidden rounded-3xl border border-[#2A2A2A]">
+          {/* Product Gallery */}
 
-          <Image
-            src={product.images[0]}
-            alt={product.title}
-            width={700}
-            height={900}
-            className="h-full w-full object-cover"
+          <ProductGallery
+            images={product.images}
+            title={product.title}
           />
 
-        </div>
+          {/* Product Details */}
 
-        {/* Product Details */}
+          <div className="pt-2">
 
-        <div>
+            <p className="uppercase tracking-[0.35em] text-[#C8A34D]">
+              {product.brand}
+            </p>
 
-          <p className="uppercase tracking-[0.3em] text-[#C8A34D]">
-            {product.brand}
-          </p>
+            <h1
+              className="mt-4 text-6xl leading-tight"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              {product.title}
+            </h1>
 
-          <h1
-            className="mt-4 text-5xl"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            {product.title}
-          </h1>
+            {/* Price */}
 
-          <div className="mt-6 flex items-center gap-4">
+            <div className="mt-8 flex items-center gap-5">
 
-            <span className="text-4xl font-bold text-[#C8A34D]">
-              ₹{product.discountPrice}
-            </span>
+              <span className="text-5xl font-bold text-[#C8A34D]">
+                ₹{product.discountPrice}
+              </span>
 
-            <span className="text-2xl text-gray-500 line-through">
-              ₹{product.price}
-            </span>
+              <span className="text-3xl text-gray-500 line-through">
+                ₹{product.price}
+              </span>
+
+            </div>
+
+            {/* Rating
+
+            <div className="mt-6 flex items-center gap-3">
+
+              <span className="text-[#C8A34D] text-lg">
+                ★★★★★
+              </span>
+
+              <span className="text-gray-400">
+                4.8 (124 Reviews)
+              </span>
+
+            </div> */}
+
+            {/* Description */}
+
+            <p className="mt-8 max-w-lg text-lg leading-9 text-gray-400">
+              {product.description}
+            </p>
+
+            {/* Size */}
+
+            <div className="mt-12">
+
+              <h3 className="mb-5 text-xl font-semibold">
+                Select Size
+              </h3>
+
+              <div className="flex gap-4">
+
+                {product.sizes.map((size) => (
+                  <button
+                    key={size}
+                    className="flex h-14 w-14 items-center justify-center rounded-xl border border-[#2A2A2A] text-lg transition-all duration-300 hover:border-[#C8A34D] hover:text-[#C8A34D]"
+                  >
+                    {size}
+                  </button>
+                ))}
+
+              </div>
+
+            </div>
+
+            {/* Add To Cart */}
+
+            <button className="mt-16 w-80 rounded-full bg-[#C8A34D] py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-[#D6B15C]">
+
+              Add To Cart
+
+            </button>
+
+            {/* Features */}
+
+            <div className="mt-14 space-y-4 border-t border-[#262626] pt-8">
+
+              <div className="flex items-center gap-3 text-gray-300">
+                🚚 <span>Free Delivery Across India</span>
+              </div>
+
+              <div className="flex items-center gap-3 text-gray-300">
+                ↩️ <span>Easy 7-Day Returns</span>
+              </div>
+
+              <div className="flex items-center gap-3 text-gray-300">
+                ✓ <span>100% Authentic ElAre Product</span>
+              </div>
+
+            </div>
 
           </div>
 
-          <p className="mt-8 leading-8 text-gray-400">
-            {product.description}
-          </p>
-
-          <h3 className="mt-10 text-lg font-semibold">
-            Select Size
-          </h3>
-
-          <div className="mt-4 flex gap-3">
-
-            {product.sizes.map((size) => (
-              <button
-                key={size}
-                className="rounded-lg border border-[#333] px-6 py-3 hover:border-[#C8A34D]"
-              >
-                {size}
-              </button>
-            ))}
-
-          </div>
-
-          <button className="mt-12 w-full rounded-full bg-[#C8A34D] py-4 text-lg font-semibold text-black transition hover:bg-[#D6B15C]">
-            Add To Cart
-          </button>
-
         </div>
 
-      </div>
+      </section>
 
     </main>
   );

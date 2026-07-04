@@ -1,4 +1,5 @@
-export const products = [
+import { Product } from "@/types/product";
+export const products: Product[] = [
   {
     id: 1,
     slug: "premium-black-tee",
@@ -10,9 +11,10 @@ export const products = [
     price: 999,
     discountPrice: 899,
     images: [
-      "/blacktee.jpg",
-      "/blacktee.jpg",
-    ],
+  "/products/blacktee/front.jpg",
+  "/products/blacktee/back.jpg",
+  "/products/blacktee/side.jpg",
+],
     sizes: ["S", "M", "L", "XL"],
     colors: ["Black"],
     stock: 25,
@@ -107,10 +109,11 @@ export const products = [
 
   discountPrice: 1599,
 
-  images: [
-    "/women.jpg",
-    "/kurthi.jpg",
-  ],
+images: [
+  "/products/Cream Kurthi/women.jpg",
+  "/products/Cream Kurthi/back.png",
+  "/products/Cream Kurthi/side.png",
+],
 
   sizes: ["S", "M", "L", "XL"],
 
