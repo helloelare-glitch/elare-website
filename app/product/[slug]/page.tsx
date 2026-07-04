@@ -77,79 +77,79 @@ export default async function ProductPage({ params }: Props) {
 
 {/* Premium Features */}
 
-<div className="mt-20 border-y border-[#262626] py-10">
+<div className="mt-20 overflow-hidden rounded-3xl border border-[#262626] bg-gradient-to-b from-[#161616] to-[#111111]">
 
-  <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+  <div className="grid grid-cols-1 md:grid-cols-3">
 
     {/* Delivery */}
 
-    <div className="flex items-start gap-4">
+    <div className="group relative overflow-hidden flex flex-col items-center justify-center p-10 text-center">
+
+      {/* Gold Sweep */}
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#D4AF3715] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+
+      {/* Divider */}
+      <span className="hidden md:block absolute right-0 top-8 bottom-8 w-px bg-[#2A2A2A]" />
 
       <Truck
         size={38}
         strokeWidth={1.8}
-        className="mt-1 text-[#C8A34D]"
+        className="relative z-10 text-[#D4AF37] transition-all duration-500 group-hover:scale-110 group-hover:text-[#FFD76A]"
       />
 
-      <div>
+      <h3 className="relative z-10 mt-5 text-lg font-medium tracking-wide text-white transition-colors duration-500 group-hover:text-[#FFF5D7]">
+        Free Delivery
+      </h3>
 
-        <h3 className="text-base font-medium tracking-wide text-white">
-          Free Delivery
-        </h3>
-
-        <p className="mt-1 text-sm leading-6 text-gray-400">
-          Across India
-        </p>
-
-      </div>
+      <p className="relative z-10 mt-2 text-sm leading-6 text-gray-400 transition-colors duration-500 group-hover:text-gray-200">
+        Across India on prepaid orders.
+      </p>
 
     </div>
 
     {/* Returns */}
 
-    <div className="flex items-start gap-4">
+    <div className="group relative overflow-hidden flex flex-col items-center justify-center p-10 text-center">
+
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#D4AF3715] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+
+      <span className="hidden md:block absolute right-0 top-8 bottom-8 w-px bg-[#2A2A2A]" />
 
       <RotateCcw
         size={38}
         strokeWidth={1.8}
-        className="mt-1 text-[#C8A34D]"
+        className="relative z-10 text-[#D4AF37] transition-all duration-500 group-hover:scale-110 group-hover:text-[#FFD76A]"
       />
 
-      <div>
+      <h3 className="relative z-10 mt-5 text-lg font-medium tracking-wide text-white transition-colors duration-500 group-hover:text-[#FFF5D7]">
+        Easy Returns
+      </h3>
 
-        <h3 className="text-base font-medium tracking-wide text-white">
-          Easy Returns
-        </h3>
-
-        <p className="mt-1 text-sm leading-6 text-gray-400">
-          Hassle-free within 7 Days
-        </p>
-
-      </div>
+      <p className="relative z-10 mt-2 text-sm leading-6 text-gray-400 transition-colors duration-500 group-hover:text-gray-200">
+        Hassle-free within 7 days.
+      </p>
 
     </div>
 
     {/* Authentic */}
 
-    <div className="flex items-start gap-4">
+    <div className="group relative overflow-hidden flex flex-col items-center justify-center p-10 text-center">
+
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#D4AF3715] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
 
       <ShieldCheck
         size={38}
         strokeWidth={1.8}
-        className="mt-1 text-[#C8A34D]"
+        className="relative z-10 text-[#D4AF37] transition-all duration-500 group-hover:scale-110 group-hover:text-[#FFD76A]"
       />
 
-      <div>
+      <h3 className="relative z-10 mt-5 text-lg font-medium tracking-wide text-white transition-colors duration-500 group-hover:text-[#FFF5D7]">
+        Authentic Products
+      </h3>
 
-        <h3 className="text-base font-medium tracking-wide text-white">
-          100% Authentic
-        </h3>
-
-        <p className="mt-1 text-sm leading-6 text-gray-400">
-          Genuine ElAre Product
-        </p>
-
-      </div>
+      <p className="relative z-10 mt-2 text-sm leading-6 text-gray-400 transition-colors duration-500 group-hover:text-gray-200">
+        Crafted with genuine ElAre quality.
+      </p>
 
     </div>
 
