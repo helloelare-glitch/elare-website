@@ -37,22 +37,6 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/men"
-            className="group relative text-sm uppercase tracking-[0.25em] text-white transition hover:text-[#D4AF37]"
-          >
-            Men
-            <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-[#D4AF37] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-
-          <Link
-            href="/women"
-            className="group relative text-sm uppercase tracking-[0.25em] text-white transition hover:text-[#D4AF37]"
-          >
-            Women
-            <span className="absolute -bottom-2 left-0 h-[2px] w-0 bg-[#D4AF37] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-
-          <Link
             href="/about"
             className="group relative text-sm uppercase tracking-[0.25em] text-white transition hover:text-[#D4AF37]"
           >

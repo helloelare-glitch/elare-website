@@ -1,24 +1,27 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const collections = [
   {
     title: "MEN",
     image: "/fashion1.jpg",
+    category: "men",
   },
   {
     title: "WOMEN",
     image: "/women.jpg",
+    category: "women",
   },
   {
     title: "COUPLES",
     image: "/couple.jpg",
+    category: "couple",
   },
 ];
 
 export default function Collections() {
   return (
     <section className="bg-[#0F0F0F] py-28">
-
       <div className="mx-auto max-w-7xl px-8">
 
         <p className="mb-3 text-center uppercase tracking-[0.35em] text-[#D4AF37]">
@@ -33,9 +36,10 @@ export default function Collections() {
 
           {collections.map((item) => (
 
-            <div
+            <Link
               key={item.title}
-              className="group cursor-pointer"
+              href={`/shop?category=${item.category}`}
+              className="group block"
             >
 
               <div className="overflow-hidden rounded-3xl">
@@ -54,18 +58,23 @@ export default function Collections() {
                 {item.title}
               </h3>
 
-              <p className="mt-3 text-[#D4AF37]">
-                Shop →
+              <p className="mt-3 inline-flex items-center gap-2 text-[#D4AF37] transition-all duration-300 group-hover:translate-x-2">
+
+                Explore
+
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+
               </p>
 
-            </div>
+            </Link>
 
           ))}
 
         </div>
 
       </div>
-
     </section>
   );
 }

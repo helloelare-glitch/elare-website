@@ -6,7 +6,10 @@ import {
   Truck,
   RotateCcw,
   ShieldCheck,
+  ArrowLeft,
 } from "lucide-react";
+
+import Link from "next/link";
 
 type Props = {
   params: Promise<{
@@ -38,13 +41,30 @@ export default async function ProductPage({ params }: Props) {
             title={product.title}
           />
 
-          {/* Product Details */}
+{/* Product Details */}
 
-          <div className="flex flex-col justify-start pt-2">
+<div className="flex flex-col justify-start pt-2">
 
-            <p className="uppercase tracking-[0.35em] text-[#C8A34D]">
-              {product.brand}
-            </p>
+  {/* Continue Shopping */}
+
+  <Link
+    href="/shop"
+    className="mb-8 flex w-fit items-center gap-2 text-sm font-medium text-gray-400 transition-all duration-300 hover:-translate-x-1 hover:text-[#D4AF37]"
+  >
+    <ArrowLeft
+      size={17}
+      strokeWidth={2}
+    />
+
+    Continue Shopping
+
+  </Link>
+
+  {/* Brand */}
+
+  <p className="uppercase tracking-[0.35em] text-[#C8A34D]">
+    {product.brand}
+  </p>
 
             <h1
               className="mt-3 text-6xl leading-[1.08]"

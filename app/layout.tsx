@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 import { Toaster } from "sonner";
+import Navbar from "@/components/layout/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,17 +34,19 @@ export default function RootLayout({
     >
       <body className="bg-[#0F0F0F] text-white antialiased">
 
-  <CartProvider>
+<CartProvider>
 
-    {children}
+  <Navbar />
 
-    <Toaster
-      position="bottom-right"
-      richColors
-      theme="dark"
-    />
+  {children}
 
-  </CartProvider>
+  <Toaster
+    position="bottom-right"
+    richColors
+    theme="dark"
+  />
+
+</CartProvider>
 
 </body>
     </html>
