@@ -30,22 +30,26 @@ const features = [
 
 export default function WhyElare() {
   return (
-    <section className="bg-[#0F0F0F] py-32">
+    <section className="bg-[#0F0F0F] py-16 sm:py-20 lg:py-28">
 
-      <div className="mx-auto max-w-7xl px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
 
-        <p className="text-center uppercase tracking-[0.35em] text-[#C8A34D]">
+        {/* Heading */}
+
+        <p className="text-center text-xs uppercase tracking-[0.35em] text-[#C8A34D] sm:text-sm">
           Why ElAre
         </p>
 
         <h2
-          className="mt-5 text-center text-5xl text-white"
+          className="mt-4 text-center text-3xl text-white sm:text-4xl lg:mt-5 lg:text-5xl"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Crafted With Purpose
         </h2>
 
-        <div className="mt-20 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {/* Features */}
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-8">
 
           {features.map((item) => {
             const Icon = item.icon;
@@ -53,20 +57,21 @@ export default function WhyElare() {
             return (
               <div
                 key={item.title}
-                className="group rounded-[28px] border border-[#262626] bg-[#151515] p-10 transition duration-300 hover:border-[#C8A34D]"
+                className="group rounded-3xl border border-[#262626] bg-[#151515] p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#C8A34D] hover:shadow-[0_10px_30px_rgba(212,175,55,0.08)] sm:p-8 lg:p-10"
               >
                 <Icon
-                  size={40}
-                  className="text-[#C8A34D]"
+                  size={34}
+                  className="text-[#C8A34D] transition-transform duration-300 group-hover:scale-110"
                 />
 
-                <h3 className="mt-8 text-2xl text-white">
+                <h3 className="mt-6 text-xl font-medium text-white sm:text-2xl">
                   {item.title}
                 </h3>
 
-                <p className="mt-4 leading-7 text-gray-400">
+                <p className="mt-3 text-sm leading-7 text-gray-400 sm:text-base">
                   {item.desc}
                 </p>
+
               </div>
             );
           })}
