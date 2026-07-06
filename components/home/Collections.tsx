@@ -9,12 +9,12 @@ const collections = [
   },
   {
     title: "WOMEN",
-    image: "/women.jpg",
+    image: "/products/Cream Kurthi/women.jpg",
     category: "women",
   },
   {
     title: "COUPLES",
-    image: "/couple.jpg",
+    image: "/products/Couple/couple.jpg",
     category: "couple",
   },
 ];

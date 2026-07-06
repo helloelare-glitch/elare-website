@@ -2,12 +2,23 @@
 
 import ProductCard from "@/components/product/ProductCard";
 import { products } from "@/data/products";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import SearchBar from "@/components/search/SearchBar";
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
+  useEffect(() => {
+  const category = searchParams.get("category");
+
+  if (category) {
+    setSelectedCategory(category);
+  } else {
+    setSelectedCategory("all");
+  }
+}, [searchParams]);
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
@@ -51,6 +62,7 @@ export default function ShopPage() {
             onChange={setSearchQuery}
           />
         </div>
+        
 
         {/* Categories */}
 
