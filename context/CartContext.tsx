@@ -23,11 +23,11 @@ type CartContextType = {
 
   addToCart: (item: CartItem) => void;
 
-  removeFromCart: (id: number) => void;
+  removeFromCart: (id: number, size: string) => void;
 
-  increaseQuantity: (id: number) => void;
+  increaseQuantity: (id: number, size: string) => void;
 
-  decreaseQuantity: (id: number) => void;
+  decreaseQuantity: (id: number, size: string) => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -38,27 +38,37 @@ export function CartProvider({
   children: ReactNode;
 }) {
   const [cart, setCart] = useState<CartItem[]>([]);
-  // Load cart from Local Storage
-useEffect(() => {
-  const savedCart = localStorage.getItem("elare-cart");
 
-  if (savedCart) {
-    setCart(JSON.parse(savedCart));
-  }
-}, []);
+  // Load cart
 
-// Save cart whenever it changes
-useEffect(() => {
-  localStorage.setItem("elare-cart", JSON.stringify(cart));
-}, [cart]);
+  useEffect(() => {
+    const savedCart = localStorage.getItem("elare-cart");
+
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // Save cart
+
+  useEffect(() => {
+    localStorage.setItem("elare-cart", JSON.stringify(cart));
+  }, [cart]);
+
+  // Add to Cart
 
   const addToCart = (item: CartItem) => {
     setCart((prev) => {
-      const existing = prev.find((p) => p.id === item.id);
+      const existing = prev.find(
+        (p) =>
+          p.id === item.id &&
+          p.size === item.size
+      );
 
       if (existing) {
         return prev.map((p) =>
-          p.id === item.id
+          p.id === item.id &&
+          p.size === item.size
             ? {
                 ...p,
                 quantity: p.quantity + item.quantity,
@@ -71,16 +81,33 @@ useEffect(() => {
     });
   };
 
-  const removeFromCart = (id: number) => {
+  // Remove
+
+  const removeFromCart = (
+    id: number,
+    size: string
+  ) => {
     setCart((prev) =>
-      prev.filter((item) => item.id !== id)
+      prev.filter(
+        (item) =>
+          !(
+            item.id === id &&
+            item.size === size
+          )
+      )
     );
   };
 
-  const increaseQuantity = (id: number) => {
+  // Increase
+
+  const increaseQuantity = (
+    id: number,
+    size: string
+  ) => {
     setCart((prev) =>
       prev.map((item) =>
-        item.id === id
+        item.id === id &&
+        item.size === size
           ? {
               ...item,
               quantity: item.quantity + 1,
@@ -90,11 +117,17 @@ useEffect(() => {
     );
   };
 
-  const decreaseQuantity = (id: number) => {
+  // Decrease
+
+  const decreaseQuantity = (
+    id: number,
+    size: string
+  ) => {
     setCart((prev) =>
       prev
         .map((item) =>
-          item.id === id
+          item.id === id &&
+          item.size === size
             ? {
                 ...item,
                 quantity: item.quantity - 1,

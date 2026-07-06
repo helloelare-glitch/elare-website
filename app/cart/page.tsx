@@ -22,22 +22,22 @@ export default function CartPage() {
     return (
       <main className="min-h-screen bg-[#0F0F0F] text-white">
 
-        <div className="mx-auto flex max-w-7xl flex-col items-center py-28">
+        <div className="mx-auto flex max-w-7xl flex-col items-center px-5 py-24 text-center">
 
           <h1
-            className="text-6xl"
+            className="text-4xl sm:text-6xl"
             style={{ fontFamily: "var(--font-heading)" }}
           >
             Your Cart
           </h1>
 
-          <p className="mt-6 text-gray-400">
+          <p className="mt-5 text-gray-400">
             Your shopping bag is empty.
           </p>
 
           <Link
             href="/shop"
-            className="mt-10 rounded-full bg-[#C8A34D] px-8 py-4 font-semibold text-black"
+            className="premium-button mt-8 rounded-full bg-[#C8A34D] px-8 py-4 font-semibold text-black"
           >
             Continue Shopping
           </Link>
@@ -51,80 +51,96 @@ export default function CartPage() {
   return (
     <main className="min-h-screen bg-[#0F0F0F] text-white">
 
-      <section className="mx-auto max-w-7xl px-8 py-20">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-20">
 
         <h1
-          className="mb-12 text-6xl"
+          className="mb-8 text-4xl sm:mb-12 sm:text-6xl"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Shopping Cart
         </h1>
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
+        <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:gap-10">
 
-          {/* LEFT */}
+          {/* Products */}
 
-          <div className="space-y-6">
+          <div className="space-y-5">
 
             {cart.map((item) => (
 
               <div
                 key={`${item.id}-${item.size}`}
-                className="flex items-center gap-6 rounded-3xl border border-[#2A2A2A] bg-[#131313] p-6"
+                className="premium-card rounded-3xl border border-[#2A2A2A] bg-[#131313] p-4 sm:p-6"
               >
 
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={140}
-                  height={160}
-                  className="rounded-2xl object-cover"
-                />
+                {/* Mobile */}
 
-                <div className="flex-1">
+                <div className="flex gap-4">
 
-                  <h2 className="text-2xl font-semibold">
-                    {item.title}
-                  </h2>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={110}
+                    height={130}
+                    className="rounded-2xl object-cover sm:w-[140px]"
+                  />
 
-                  <p className="mt-2 text-gray-400">
-                    Size : {item.size}
-                  </p>
+                  <div className="flex flex-1 flex-col">
 
-                  <p className="mt-2 text-[#C8A34D] text-2xl font-bold">
-                    ₹{item.price}
-                  </p>
+                    <h2 className="text-lg font-semibold sm:text-2xl">
+                      {item.title}
+                    </h2>
 
-                  <div className="mt-6 flex items-center gap-4">
+                    <p className="mt-1 text-sm text-gray-400">
+                      Size : {item.size}
+                    </p>
 
-                    <button
-                      onClick={() => decreaseQuantity(item.id)}
-                      className="h-10 w-10 rounded-lg border border-[#333]"
-                    >
-                      −
-                    </button>
+                    <p className="mt-2 text-xl font-bold text-[#C8A34D] sm:text-2xl">
+                      ₹{item.price}
+                    </p>
 
-                    <span className="text-lg">
-                      {item.quantity}
-                    </span>
+                    <div className="mt-auto flex items-center justify-between pt-5">
 
-                    <button
-                      onClick={() => increaseQuantity(item.id)}
-                      className="h-10 w-10 rounded-lg border border-[#333]"
-                    >
-                      +
-                    </button>
+                      <div className="flex items-center gap-3">
+
+                        <button
+                          onClick={() =>
+                            decreaseQuantity(item.id, item.size)
+                          }
+                          className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#333] transition hover:border-[#C8A34D]"
+                        >
+                          −
+                        </button>
+
+                        <span className="w-5 text-center">
+                          {item.quantity}
+                        </span>
+
+                        <button
+                          onClick={() =>
+                            increaseQuantity(item.id, item.size)
+                          }
+                          className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#333] transition hover:border-[#C8A34D]"
+                        >
+                          +
+                        </button>
+
+                      </div>
+
+                      <button
+                        onClick={() =>
+                          removeFromCart(item.id, item.size)
+                        }
+                        className="text-red-400 transition hover:text-red-500"
+                      >
+                        <Trash2 size={20} />
+                      </button>
+
+                    </div>
 
                   </div>
 
                 </div>
-
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  className="text-red-400 transition hover:text-red-500"
-                >
-                  <Trash2 />
-                </button>
 
               </div>
 
@@ -132,11 +148,11 @@ export default function CartPage() {
 
           </div>
 
-          {/* RIGHT */}
+          {/* Summary */}
 
-          <div className="h-fit rounded-3xl border border-[#2A2A2A] bg-[#131313] p-8">
+          <div className="premium-card h-fit rounded-3xl border border-[#2A2A2A] bg-[#131313] p-6 sm:p-8">
 
-            <h2 className="text-3xl font-semibold">
+            <h2 className="text-2xl font-semibold sm:text-3xl">
               Order Summary
             </h2>
 
@@ -166,7 +182,7 @@ export default function CartPage() {
 
             <div className="my-8 border-t border-[#333]" />
 
-            <div className="flex justify-between text-2xl font-bold">
+            <div className="flex justify-between text-xl font-bold sm:text-2xl">
 
               <span>Total</span>
 
@@ -176,7 +192,7 @@ export default function CartPage() {
 
             </div>
 
-            <button className="mt-10 w-full rounded-full bg-[#C8A34D] py-4 text-lg font-semibold text-black transition hover:bg-[#D6B15C]">
+            <button className="premium-button mt-8 w-full rounded-full bg-[#C8A34D] py-4 text-base font-semibold text-black transition hover:bg-[#D6B15C] sm:mt-10 sm:text-lg">
 
               Proceed to Checkout
 
