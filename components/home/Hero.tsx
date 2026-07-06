@@ -48,14 +48,14 @@ export default function Hero() {
 
             <Link
               href="/shop"
-              className="flex items-center justify-center rounded-full bg-[#C8A34D] px-8 py-4 text-center font-semibold text-black transition hover:bg-[#D6B15C]"
+              className="premium-button flex items-center justify-center rounded-full bg-[#C8A34D] px-8 py-4 text-center font-semibold text-black transition-all duration-300 hover:bg-[#D6B15C]"
             >
               Shop Collection
             </Link>
 
             <Link
               href="/about"
-              className="flex items-center justify-center rounded-full border border-[#C8A34D] px-8 py-4 text-center font-semibold text-[#C8A34D] transition hover:bg-[#C8A34D] hover:text-black"
+              className="premium-button flex items-center justify-center rounded-full border border-[#C8A34D] px-8 py-4 text-center font-semibold text-[#C8A34D] transition-all duration-300 hover:bg-[#C8A34D] hover:text-black"
             >
               Our Story
             </Link>
@@ -68,14 +68,14 @@ export default function Hero() {
 
         <div className="order-1 lg:order-2">
 
-          <div className="relative mx-auto h-[420px] w-full max-w-sm overflow-hidden rounded-[28px] border border-[#2A2A2A] sm:h-[520px] sm:max-w-md lg:h-[650px] lg:max-w-none">
+          <div className="premium-card relative mx-auto h-[420px] w-full max-w-sm overflow-hidden rounded-[28px] border border-[#2A2A2A] sm:h-[520px] sm:max-w-md lg:h-[650px] lg:max-w-none">
 
             <Image
               src="/fashionboth.jpg"
               alt="ElAre Luxury Fashion"
               fill
               priority
-              className="object-cover transition duration-700 hover:scale-105"
+              className="premium-image object-cover"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />

@@ -57,18 +57,19 @@ export default function WhyElare() {
             return (
               <div
                 key={item.title}
-                className="group rounded-3xl border border-[#262626] bg-[#151515] p-6 transition-all duration-300 hover:-translate-y-2 hover:border-[#C8A34D] hover:shadow-[0_10px_30px_rgba(212,175,55,0.08)] sm:p-8 lg:p-10"
+                className="group premium-card rounded-3xl border border-[#262626] bg-[#151515] p-6 sm:p-8 lg:p-10"
               >
+
                 <Icon
-                  size={34}
-                  className="text-[#C8A34D] transition-transform duration-300 group-hover:scale-110"
+                  size={36}
+                  className="text-[#D4AF37] transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
                 />
 
-                <h3 className="mt-6 text-xl font-medium text-white sm:text-2xl">
+                <h3 className="mt-6 text-xl font-medium text-white transition-colors duration-300 group-hover:text-[#FFF7E1] sm:text-2xl">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 text-sm leading-7 text-gray-400 sm:text-base">
+                <p className="mt-3 text-sm leading-7 text-gray-400 transition-colors duration-300 group-hover:text-gray-300 sm:text-base">
                   {item.desc}
                 </p>
 

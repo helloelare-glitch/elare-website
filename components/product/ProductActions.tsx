@@ -38,21 +38,21 @@ export default function ProductActions({
     });
 
     toast.custom(() => (
-      <div className="w-[320px] sm:w-[360px] rounded-2xl border border-[#C8A34D] bg-[#111111] p-5 shadow-2xl">
+      <div className="w-[320px] rounded-2xl border border-[#D4AF37] bg-[#111111] p-5 shadow-[0_0_30px_rgba(212,175,55,0.12)] sm:w-[360px]">
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
 
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#C8A34D] text-black font-bold">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#D4AF37] text-lg font-bold text-black">
             ✓
           </div>
 
           <div>
 
-            <p className="font-semibold text-white">
+            <p className="text-base font-semibold text-white">
               Added to Cart
             </p>
 
-            <p className="text-sm text-gray-400">
+            <p className="mt-1 text-sm text-gray-400">
               {product.title}
             </p>
 
@@ -62,7 +62,7 @@ export default function ProductActions({
 
         <button
           onClick={() => router.push("/cart")}
-          className="mt-5 w-full rounded-full bg-[#C8A34D] py-3 font-semibold text-black transition hover:bg-[#D6B15C]"
+          className="premium-button mt-6 w-full rounded-full bg-[#D4AF37] py-3 font-semibold text-black transition-all duration-300 hover:bg-[#DDB95A]"
         >
           View Cart
         </button>
@@ -73,12 +73,11 @@ export default function ProductActions({
 
   return (
     <>
-
       {/* Size */}
 
       <div className="mt-8">
 
-        <h3 className="mb-4 text-lg font-semibold sm:text-xl">
+        <h3 className="mb-5 text-lg font-semibold text-white sm:text-xl">
           Select Size
         </h3>
 
@@ -90,10 +89,10 @@ export default function ProductActions({
               key={size}
               type="button"
               onClick={() => setSelectedSize(size)}
-              className={`flex h-12 w-12 items-center justify-center rounded-xl border text-base transition-all duration-300 sm:h-14 sm:w-14 sm:text-lg ${
+              className={`premium-button flex h-12 w-12 items-center justify-center rounded-xl border text-base font-medium transition-all duration-300 sm:h-14 sm:w-14 sm:text-lg ${
                 selectedSize === size
-                  ? "border-[#C8A34D] bg-[#C8A34D] text-black"
-                  : "border-[#2A2A2A] hover:border-[#C8A34D]"
+                  ? "border-[#D4AF37] bg-[#D4AF37] text-black shadow-[0_0_16px_rgba(212,175,55,0.18)]"
+                  : "border-[#2A2A2A] bg-[#151515] text-white hover:border-[#D4AF37]"
               }`}
             >
               {size}
@@ -121,11 +120,10 @@ export default function ProductActions({
       <button
         type="button"
         onClick={handleAddToCart}
-        className="mt-8 w-full rounded-full bg-[#C8A34D] py-4 text-base font-semibold text-black transition-all duration-300 hover:scale-[1.02] hover:bg-[#D6B15C] sm:mt-10 sm:max-w-[420px] sm:text-lg"
+        className="premium-button mt-8 w-full rounded-full bg-[#D4AF37] py-4 text-base font-semibold text-black transition-all duration-300 hover:bg-[#DDB95A] sm:mt-10 sm:max-w-[420px] sm:text-lg"
       >
         Add To Cart
       </button>
-
     </>
   );
 }

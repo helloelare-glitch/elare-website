@@ -22,6 +22,7 @@ const collections = [
 export default function Collections() {
   return (
     <section className="bg-[#0F0F0F] py-16 sm:py-20 lg:py-28">
+
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
 
         {/* Heading */}
@@ -46,10 +47,10 @@ export default function Collections() {
             <Link
               key={item.title}
               href={`/shop?category=${item.category}`}
-              className="group block"
+              className="group premium-card block"
             >
 
-              <div className="overflow-hidden rounded-3xl border border-[#262626] bg-[#151515] transition-all duration-300 group-hover:-translate-y-2 group-hover:border-[#C8A34D]">
+              <div className="overflow-hidden rounded-3xl border border-[#262626] bg-[#151515]">
 
                 <div className="overflow-hidden">
 
@@ -58,26 +59,28 @@ export default function Collections() {
                     alt={item.title}
                     width={600}
                     height={700}
-                    className="h-[340px] w-full object-cover transition duration-700 group-hover:scale-105 sm:h-[420px] lg:h-[520px]"
+                    className="premium-image h-[340px] w-full object-cover sm:h-[420px] lg:h-[520px]"
                   />
 
                 </div>
 
                 <div className="p-6">
 
-                  <h3 className="text-xl tracking-[0.18em] text-white sm:text-2xl">
+                  <h3 className="text-xl tracking-[0.18em] text-white transition-colors duration-300 group-hover:text-[#FFF7E1] sm:text-2xl">
                     {item.title}
                   </h3>
 
-                  <p className="mt-3 inline-flex items-center gap-2 text-[#D4AF37] transition-all duration-300 group-hover:translate-x-2">
+                  <div className="mt-4 flex items-center gap-2">
 
-                    Explore
+                    <span className="text-[#D4AF37] transition-all duration-300 group-hover:tracking-[0.15em]">
+                      Explore
+                    </span>
 
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="text-[#D4AF37] transition-all duration-300 group-hover:translate-x-2">
                       →
                     </span>
 
-                  </p>
+                  </div>
 
                 </div>
 
@@ -90,6 +93,7 @@ export default function Collections() {
         </div>
 
       </div>
+
     </section>
   );
 }
