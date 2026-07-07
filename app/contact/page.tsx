@@ -51,24 +51,35 @@ export default function ContactPage() {
           {/* LEFT */}
 
           <div>
-
             <p className="text-sm uppercase tracking-[0.35em] text-[#C8A34D]">
-              GET IN TOUCH
-            </p>
+  GET IN TOUCH
+</p>
 
-            <h2
-              className="mt-5 text-4xl leading-tight sm:text-5xl"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              We'd Love
-              <br />
-              To Hear From You.
-            </h2>
+<h2
+  className="mt-5 text-4xl leading-tight sm:text-5xl lg:text-6xl"
+  style={{ fontFamily: "var(--font-heading)" }}
+>
+  Every Conversation
+  <br />
 
-            <p className="mt-8 max-w-xl text-lg leading-9 text-gray-400">
-              Every message matters to us. Whether it's about your order,
-              sizing, collaborations or feedback, our team is here to help.
-            </p>
+  <span className="text-[#D4AF37]">
+    Starts A Story.
+  </span>
+
+</h2>
+
+<p className="mt-8 max-w-xl text-lg leading-9 text-gray-400">
+
+Questions.
+
+Ideas.
+
+Collaborations.
+
+Every message helps us build a better ElAre.
+We'd love to hear yours.
+
+</p>
 
             <div className="mt-12 space-y-5">
 
@@ -90,7 +101,7 @@ export default function ContactPage() {
                   </p>
 
                   <p className="mt-1 text-lg text-white">
-                    hello@elare.in
+                    hello.elare@gmail.com
                   </p>
 
                 </div>
