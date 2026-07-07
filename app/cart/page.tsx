@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
+
 export default function CartPage() {
   const {
     cart,
@@ -192,11 +193,12 @@ export default function CartPage() {
 
             </div>
 
-            <button className="premium-button mt-8 w-full rounded-full bg-[#C8A34D] py-4 text-base font-semibold text-black transition hover:bg-[#D6B15C] sm:mt-10 sm:text-lg">
-
-              Proceed to Checkout
-
-            </button>
+            <Link
+  href="/checkout"
+  className="premium-button mt-10 flex w-full items-center justify-center rounded-full bg-[#D4AF37] py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.02]"
+>
+  Proceed to Checkout
+</Link>
 
           </div>
 
