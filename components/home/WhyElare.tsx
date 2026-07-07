@@ -40,12 +40,12 @@ export default function WhyElare() {
           WHY ELARE
         </p>
 
-        <h2
-          className="mt-5 text-center text-4xl sm:text-5xl lg:text-6xl"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
-          Crafted With Purpose
-        </h2>
+      <h2
+        className="mt-5 text-center text-4xl text-white sm:text-5xl lg:text-6xl"
+        style={{ fontFamily: "var(--font-heading)" }}
+      >
+        Crafted With Purpose
+      </h2>
 
         {/* Features */}
 
