@@ -1,9 +1,66 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowRight, Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import { supabase } from "@/lib/supabase";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleLogin = async (
+    e: React.FormEvent
+  ) => {
+    e.preventDefault();
+
+    if (!form.email.trim()) {
+      toast.error("Please enter your email.");
+      return;
+    }
+
+    if (!form.password.trim()) {
+      toast.error("Please enter your password.");
+      return;
+    }
+
+    setLoading(true);
+
+    const { error } =
+      await supabase.auth.signInWithPassword({
+        email: form.email,
+        password: form.password,
+      });
+
+    setLoading(false);
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+
+    toast.success("Welcome back!");
+
+    router.push("/");
+  };
+
   return (
     <main className="min-h-screen bg-[#0F0F0F] text-white">
 
@@ -29,33 +86,53 @@ export default function LoginPage() {
           </h1>
 
           <p className="mt-5 text-center leading-8 text-gray-400">
-            Sign in to continue your premium
-            ElAre journey.
+            Sign in to continue your premium ElAre journey.
           </p>
 
-          <div className="mt-10 space-y-5">
-
-            <input
-              type="tel"
-              placeholder="Mobile Number"
-              className="w-full rounded-2xl border border-[#333] bg-[#111111] px-5 py-4 outline-none transition focus:border-[#D4AF37]"
+          <form
+            onSubmit={handleLogin}
+            className="mt-10 space-y-5"
+          >
+                        <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Email Address"
+              className="w-full rounded-2xl border border-[#333] bg-[#111111] px-5 py-4 text-white outline-none transition focus:border-[#D4AF37]"
             />
 
             <input
+              name="password"
               type="password"
+              value={form.password}
+              onChange={handleChange}
               placeholder="Password"
-              className="w-full rounded-2xl border border-[#333] bg-[#111111] px-5 py-4 outline-none transition focus:border-[#D4AF37]"
+              className="w-full rounded-2xl border border-[#333] bg-[#111111] px-5 py-4 text-white outline-none transition focus:border-[#D4AF37]"
             />
 
-            <button className="premium-button flex w-full items-center justify-center gap-2 rounded-full bg-[#D4AF37] py-4 font-semibold text-black transition hover:scale-[1.02]">
-
-              Login
-
-              <ArrowRight size={18} />
-
+            <button
+              type="submit"
+              disabled={loading}
+              className="premium-button flex w-full items-center justify-center gap-2 rounded-full bg-[#D4AF37] py-4 font-semibold text-black transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {loading ? (
+                <>
+                  <Loader2
+                    size={18}
+                    className="animate-spin"
+                  />
+                  Logging in...
+                </>
+              ) : (
+                <>
+                  Login
+                  <ArrowRight size={18} />
+                </>
+              )}
             </button>
 
-          </div>
+          </form>
 
           <div className="my-8 flex items-center">
 
@@ -69,10 +146,11 @@ export default function LoginPage() {
 
           </div>
 
-          <button className="flex w-full items-center justify-center rounded-full border border-[#333] py-4 transition hover:border-[#D4AF37] hover:text-[#D4AF37]">
-
+          <button
+            type="button"
+            className="flex w-full items-center justify-center rounded-full border border-[#333] py-4 transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
+          >
             Continue with Google
-
           </button>
 
           <p className="mt-8 text-center text-gray-400">
