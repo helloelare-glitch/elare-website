@@ -38,7 +38,27 @@ export default function AboutPage() {
 
   {/* Background Glow */}
 
-  <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[#C8A34D]/10 blur-[140px]" />
+  {/* Luxury Glow */}
+
+<div
+  className="
+    absolute left-1/2
+    top-[-80px]
+    -translate-x-1/2
+    rounded-full
+    bg-[#C8A34D]/10
+    blur-[120px]
+
+    h-[500px] w-[500px]
+
+    sm:h-[600px] sm:w-[600px]
+
+    lg:top-0
+    lg:h-[600px]
+    lg:w-[600px]
+    lg:blur-[140px]
+  "
+/>
 
   <div className="relative mx-auto flex max-w-7xl flex-col items-center px-5 py-24 text-center sm:px-8 lg:py-36">
 
@@ -86,7 +106,7 @@ export default function AboutPage() {
     </div>
 
   </div>
-
+<div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[#0F0F0F]" />
 </section>
 
 <section
