@@ -4,8 +4,16 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import { ArrowLeft, CheckCircle2, Package2, CalendarDays, CreditCard, MapPin } from "lucide-react";
-
+import {
+  ArrowLeft,
+  CheckCircle2,
+  Package2,
+  CalendarDays,
+  MapPin,
+  User,
+  Phone,
+  Mail,
+} from "lucide-react";
 type Order = {
   orderId: string;
   date: string;
@@ -153,7 +161,7 @@ export default function OrderDetailsPage() {
                 className="rounded-[32px] border border-[#262626] bg-gradient-to-b from-[#1A1A1A] to-[#141414] p-5 transition hover:border-[#D4AF37]"
               >
 
-                <div className="flex items-start gap-5">
+                <div className="flex flex-col gap-5 sm:flex-row">
 
                   <Image
                     src={item.image}
@@ -163,7 +171,7 @@ export default function OrderDetailsPage() {
                     className="h-28 w-24 rounded-3xl object-cover shadow-xl sm:h-36 sm:w-28"
                   />
 
-                  <div className="flex-1">
+                  <div className="flex flex-1 flex-col justify-center">
 
                     <h3
                       className="text-xl leading-7 sm:text-2xl"
@@ -172,17 +180,37 @@ export default function OrderDetailsPage() {
                       {item.title}
                     </h3>
 
-                    <p className="mt-4 text-gray-400">
-                      Size <span className="text-white">{item.size}</span>
-                    </p>
+<div className="mt-5 flex flex-wrap gap-6">
 
-                    <p className="mt-2 text-gray-400">
-                      Quantity <span className="text-white">{item.quantity}</span>
-                    </p>
+  <div>
 
-                    <p className="mt-5 text-2xl font-semibold text-[#D4AF37]">
-                      ₹{item.price}
-                    </p>
+    <p className="text-xs uppercase tracking-wider text-gray-500">
+      Size
+    </p>
+
+    <p className="mt-2 text-lg">
+      {item.size}
+    </p>
+
+  </div>
+
+  <div>
+
+    <p className="text-xs uppercase tracking-wider text-gray-500">
+      Quantity
+    </p>
+
+    <p className="mt-2 text-lg">
+      {item.quantity}
+    </p>
+
+  </div>
+
+</div>
+
+<p className="mt-6 text-3xl font-semibold text-[#D4AF37]">
+  ₹{item.price}
+</p>
 
                   </div>
 
@@ -270,35 +298,6 @@ export default function OrderDetailsPage() {
                   </span>
 
                 </div>
-
-              </div>
-
-            </div>
-
-            <div className="rounded-[32px] border border-[#262626] bg-gradient-to-b from-[#1A1A1A] to-[#141414] p-7">
-
-              <div className="flex items-center gap-3">
-
-                <CreditCard className="text-[#D4AF37]" />
-
-                <h2
-                  className="text-2xl"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
-                  Payment
-                </h2>
-
-              </div>
-
-              <div className="mt-7 rounded-2xl border border-[#2A2A2A] bg-[#111111] p-5">
-
-                <p className="text-sm uppercase tracking-[0.2em] text-gray-500">
-                  Method
-                </p>
-
-                <p className="mt-3 text-xl">
-                  {order.payment}
-                </p>
 
               </div>
 
