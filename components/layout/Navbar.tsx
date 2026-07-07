@@ -99,16 +99,17 @@ export default function Navbar() {
 
             {/* Desktop Login */}
 
-            <button className="premium-button hidden items-center gap-2 rounded-full border border-[#D4AF37] px-6 py-3 text-sm font-medium uppercase tracking-wider text-[#D4AF37] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black md:flex">
+            <Link
+  href="/login"
+  className="premium-button hidden items-center gap-2 rounded-full border border-[#D4AF37] px-6 py-3 text-sm font-medium uppercase tracking-wider text-[#D4AF37] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black md:flex"
+>
+  <User
+    size={18}
+    className="premium-icon"
+  />
 
-              <User
-                size={18}
-                className="premium-icon"
-              />
-
-              Login
-
-            </button>
+  Login
+</Link>
 
             {/* Mobile Menu */}
 
