@@ -45,7 +45,7 @@ const date =
 const orderCount =
   JSON.parse(localStorage.getItem("elare-orders") || "[]").length + 1;
 
-const orderId = `ELA${date}${String(orderCount).padStart(4, "0")}`;
+const orderId = `ELA-${date}-${String(orderCount).padStart(4, "0")}`;
  const order = {
   orderId,
   date: new Date().toISOString(),
