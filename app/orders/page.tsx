@@ -173,43 +173,83 @@ export default function OrdersPage() {
 
                       )}
                     <div className="mt-6 border-t border-[#2A2A2A]" />
-                      <div className="mt-6 flex items-center justify-between">
+<div className="mt-6">
 
-                        <div>
+  {/* Mobile Layout */}
 
-                          <p className="text-xs uppercase tracking-wider text-gray-500">
-                            Order
-                          </p>
+  <div className="block sm:hidden">
 
-                          <p className="mt-1 text-sm text-gray-300">
-                            {order.orderId}
-                          </p>
+    <p className="text-xs uppercase tracking-[0.25em] text-gray-500">
+      Order Number
+    </p>
 
-                          <p className="mt-2 text-sm text-gray-500">
-                            {new Date(order.date).toLocaleDateString(
-                              "en-IN",
-                              {
-                                day: "numeric",
-                                month: "short",
-                                year: "numeric",
-                              }
-                            )}
-                          </p>
+    <p className="mt-2 break-all font-mono text-sm text-white">
+      {order.orderId}
+    </p>
 
-                        </div>
+    <p className="mt-2 text-sm text-gray-500">
+      {new Date(order.date).toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })}
+    </p>
 
-                        <span className="flex items-center gap-2 rounded-full border border-[#D4AF37] px-5 py-2 text-sm font-medium text-[#D4AF37] transition-all duration-300 group-hover:bg-[#D4AF37] group-hover:text-black">
+    <div className="mt-5">
 
-                          View Details
+      <div className="flex items-center justify-center gap-2 rounded-full border border-[#D4AF37] py-3 text-sm font-medium text-[#D4AF37] transition-all duration-300 group-hover:bg-[#D4AF37] group-hover:text-black">
 
-                          <ArrowRight
-                            size={16}
-                            className="transition group-hover:translate-x-1"
-                          />
+        View Details
 
-                        </span>
+        <ArrowRight
+          size={16}
+          className="transition group-hover:translate-x-1"
+        />
 
-                      </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* Desktop Layout */}
+
+  <div className="hidden items-center justify-between sm:flex">
+
+    <div>
+
+      <p className="text-xs uppercase tracking-wider text-gray-500">
+        Order
+      </p>
+
+      <p className="mt-1 text-sm text-gray-300">
+        {order.orderId}
+      </p>
+
+      <p className="mt-2 text-sm text-gray-500">
+        {new Date(order.date).toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })}
+      </p>
+
+    </div>
+
+    <span className="flex items-center gap-2 rounded-full border border-[#D4AF37] px-5 py-2 text-sm font-medium text-[#D4AF37] transition-all duration-300 group-hover:bg-[#D4AF37] group-hover:text-black">
+
+      View Details
+
+      <ArrowRight
+        size={16}
+        className="transition group-hover:translate-x-1"
+      />
+
+    </span>
+
+  </div>
+
+</div>
 
                     </div>
 
