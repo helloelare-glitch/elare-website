@@ -4,7 +4,25 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 
-export default function OrderSummary() {
+type Props = {
+  form: {
+    fullName: string;
+    mobile: string;
+    email: string;
+    address: string;
+    city: string;
+    state: string;
+    pincode: string;
+  };
+  payment: string;
+  validateForm: () => boolean;
+};
+
+export default function OrderSummary({
+  form,
+  payment,
+  validateForm,
+}: Props) {
   const { cart, clearCart } = useCart();
 
 const router = useRouter();
@@ -14,13 +32,29 @@ const router = useRouter();
     0
   );
   const handlePlaceOrder = () => {
-  const order = {
-    orderId: `ELA-${Date.now()}`,
-    date: new Date().toISOString(),
-    items: cart,
-    total: subtotal,
-    status: "Confirmed",
-  };
+  if (!validateForm()) {
+    return;
+  }
+const today = new Date();
+
+const date =
+  today.getFullYear().toString().slice(-2) +
+  String(today.getMonth() + 1).padStart(2, "0") +
+  String(today.getDate()).padStart(2, "0");
+
+const orderCount =
+  JSON.parse(localStorage.getItem("elare-orders") || "[]").length + 1;
+
+const orderId = `ELA${date}${String(orderCount).padStart(4, "0")}`;
+ const order = {
+  orderId,
+  date: new Date().toISOString(),
+  items: cart,
+  total: subtotal,
+  status: "Confirmed",
+  payment,
+  customer: form,
+};
 
   localStorage.setItem(
     "elare-last-order",
@@ -40,7 +74,6 @@ const router = useRouter();
 
   router.push("/order-success");
 };
-
   return (
     <div className="sticky top-28 h-fit rounded-[32px] border border-[#262626] bg-gradient-to-b from-[#1A1A1A] to-[#141414] p-6 sm:p-8">
 
