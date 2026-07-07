@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { CartProvider } from "@/context/CartContext";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 import { Toaster } from "sonner";
 import Navbar from "@/components/layout/Navbar";
@@ -34,19 +35,23 @@ export default function RootLayout({
     >
       <body className="bg-[#0F0F0F] text-white antialiased">
 
-<CartProvider>
+<AuthProvider>
 
-  <Navbar />
+  <CartProvider>
 
-  {children}
+    <Navbar />
 
-  <Toaster
-    position="bottom-right"
-    richColors
-    theme="dark"
-  />
+    {children}
 
-</CartProvider>
+    <Toaster
+      position="bottom-right"
+      richColors
+      theme="dark"
+    />
+
+  </CartProvider>
+
+</AuthProvider>
 
 </body>
     </html>
