@@ -61,7 +61,10 @@ export default function ProductActions({
         </div>
 
         <button
-          onClick={() => router.push("/cart")}
+          onClick={() => {
+  toast.dismiss();
+  router.push("/cart");
+}}
           className="premium-button mt-6 w-full rounded-full bg-[#D4AF37] py-3 font-semibold text-black transition-all duration-300 hover:bg-[#DDB95A]"
         >
           View Cart

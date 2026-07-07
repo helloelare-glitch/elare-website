@@ -1,16 +1,45 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 
 export default function OrderSummary() {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
+
+const router = useRouter();
 
   const subtotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
+  const handlePlaceOrder = () => {
+  const order = {
+    orderId: `ELA-${Date.now()}`,
+    date: new Date().toISOString(),
+    items: cart,
+    total: subtotal,
+    status: "Confirmed",
+  };
+
+  localStorage.setItem(
+    "elare-last-order",
+    JSON.stringify(order)
+  );
+
+  const previousOrders = JSON.parse(
+    localStorage.getItem("elare-orders") || "[]"
+  );
+
+  localStorage.setItem(
+    "elare-orders",
+    JSON.stringify([order, ...previousOrders])
+  );
+
+  clearCart();
+
+  router.push("/order-success");
+};
 
   return (
     <div className="sticky top-28 h-fit rounded-[32px] border border-[#262626] bg-gradient-to-b from-[#1A1A1A] to-[#141414] p-6 sm:p-8">
@@ -98,12 +127,13 @@ export default function OrderSummary() {
 
       </div>
 
-      <Link
-        href="/order-success"
-        className="premium-button mt-10 flex w-full items-center justify-center rounded-full bg-[#D4AF37] py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.02]"
-      >
-        Place Order
-      </Link>
+<button
+  onClick={handlePlaceOrder}
+  disabled={cart.length === 0}
+  className="premium-button mt-10 flex w-full items-center justify-center rounded-full bg-[#D4AF37] py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50"
+>
+  Place Order
+</button>
 
     </div>
   );

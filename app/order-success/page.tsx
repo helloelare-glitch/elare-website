@@ -1,8 +1,32 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight, ShoppingBag } from "lucide-react";
+import {
+  CheckCircle2,
+  ArrowRight,
+  ShoppingBag,
+} from "lucide-react";
+
+type Order = {
+  orderId: string;
+  date: string;
+  total: number;
+  status: string;
+};
 
 export default function OrderSuccessPage() {
-  const orderId = `ELA${Date.now().toString().slice(-6)}`;
+  const [order, setOrder] = useState<Order | null>(null);
+
+  useEffect(() => {
+    const savedOrder = localStorage.getItem(
+      "elare-last-order"
+    );
+
+    if (savedOrder) {
+      setOrder(JSON.parse(savedOrder));
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#0F0F0F] text-white">
@@ -44,11 +68,9 @@ export default function OrderSuccessPage() {
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-9 text-gray-400">
-
             Your order has been placed successfully.
-
+            <br />
             We're preparing your premium ElAre experience.
-
           </p>
 
           {/* Order Card */}
@@ -62,7 +84,47 @@ export default function OrderSuccessPage() {
               </span>
 
               <span className="font-semibold text-[#D4AF37]">
-                {orderId}
+                {order?.orderId ?? "-"}
+              </span>
+
+            </div>
+
+            <div className="mt-5 flex items-center justify-between">
+
+              <span className="text-gray-400">
+                Status
+              </span>
+
+              <span className="text-green-400">
+                {order?.status ?? "Confirmed"}
+              </span>
+
+            </div>
+
+            <div className="mt-5 flex items-center justify-between">
+
+              <span className="text-gray-400">
+                Total
+              </span>
+
+              <span className="font-semibold text-[#D4AF37]">
+                ₹{order?.total ?? 0}
+              </span>
+
+            </div>
+
+            <div className="mt-5 flex items-center justify-between">
+
+              <span className="text-gray-400">
+                Date
+              </span>
+
+              <span>
+                {order
+                  ? new Date(order.date).toLocaleDateString(
+                      "en-IN"
+                    )
+                  : "-"}
               </span>
 
             </div>
@@ -95,22 +157,18 @@ export default function OrderSuccessPage() {
               href="/shop"
               className="premium-button flex items-center justify-center gap-3 rounded-full bg-[#D4AF37] px-10 py-4 font-semibold text-black transition-all duration-300 hover:scale-105"
             >
-
               Continue Shopping
 
               <ArrowRight size={18} />
-
             </Link>
 
             <Link
-              href="/"
+              href="/orders"
               className="flex items-center justify-center gap-3 rounded-full border border-[#D4AF37] px-10 py-4 font-semibold text-[#D4AF37] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black"
             >
-
               <ShoppingBag size={18} />
 
-              Home
-
+              My Orders
             </Link>
 
           </div>
@@ -118,9 +176,11 @@ export default function OrderSuccessPage() {
           <p className="mt-12 text-sm text-gray-500">
             Need help?
             Contact us anytime at
+
             <span className="ml-2 text-[#D4AF37]">
               hello@elare.in
             </span>
+
           </p>
 
         </div>
