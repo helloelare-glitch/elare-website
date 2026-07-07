@@ -110,3 +110,21 @@ html {
 .premium-icon:active {
   transform: scale(.88);
 }
+@media (hover: none) {
+  .premium-card:active {
+    transform: scale(0.98);
+  }
+
+  .premium-image:active {
+    transform: scale(1.05);
+  }
+
+  .premium-button:active {
+    transform: scale(0.97);
+  }
+
+  .premium-icon:active {
+    transform: scale(1.15);
+    color: #D4AF37;
+  }
+}

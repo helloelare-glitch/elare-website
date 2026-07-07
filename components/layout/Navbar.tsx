@@ -3,12 +3,21 @@
 import { useState } from "react";
 import Logo from "../Logo";
 import Link from "next/link";
-import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
+import {
+  Search,
+  ShoppingBag,
+  User,
+  Menu,
+  X,
+} from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import SearchModal from "@/components/search/SearchModal";
 
 export default function Navbar() {
   const { cart } = useCart();
+
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const totalItems = cart.reduce(
     (total, item) => total + item.quantity,
@@ -59,10 +68,16 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
 
-            <Search
-              size={20}
-              className="premium-icon cursor-pointer text-white transition-all duration-300 hover:text-[#D4AF37]"
-            />
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="premium-icon"
+              aria-label="Search"
+            >
+              <Search
+                size={20}
+                className="cursor-pointer text-white transition-all duration-300 hover:text-[#D4AF37]"
+              />
+            </button>
 
             <Link
               href="/cart"
@@ -168,6 +183,13 @@ export default function Navbar() {
         </div>
 
       </div>
+
+      {/* Search Modal */}
+
+      <SearchModal
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
 
     </>
   );

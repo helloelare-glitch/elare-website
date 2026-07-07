@@ -36,12 +36,12 @@ export default function WhyElare() {
 
         {/* Heading */}
 
-        <p className="text-center text-xs uppercase tracking-[0.35em] text-[#C8A34D] sm:text-sm">
-          Why ElAre
+        <p className="text-center text-xs uppercase tracking-[0.4em] text-[#C8A34D] sm:text-sm">
+          WHY ELARE
         </p>
 
         <h2
-          className="mt-4 text-center text-3xl text-white sm:text-4xl lg:mt-5 lg:text-5xl"
+          className="mt-5 text-center text-4xl sm:text-5xl lg:text-6xl"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Crafted With Purpose
@@ -49,7 +49,7 @@ export default function WhyElare() {
 
         {/* Features */}
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-8">
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-8">
 
           {features.map((item) => {
             const Icon = item.icon;
@@ -57,15 +57,18 @@ export default function WhyElare() {
             return (
               <div
                 key={item.title}
-                className="group premium-card rounded-3xl border border-[#262626] bg-[#151515] p-6 sm:p-8 lg:p-10"
+                className="group premium-card rounded-[26px] border border-[#2A2A2A] bg-gradient-to-b from-[#1A1A1A] to-[#141414] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37] hover:shadow-[0_20px_60px_rgba(212,175,55,0.08)] sm:p-8"
               >
 
                 <Icon
-                  size={36}
-                  className="text-[#D4AF37] transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                  size={38}
+                  className="text-[#D4AF37] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
                 />
 
-                <h3 className="mt-6 text-xl font-medium text-white transition-colors duration-300 group-hover:text-[#FFF7E1] sm:text-2xl">
+                <h3
+                  className="mt-5 text-lg leading-tight text-white transition-colors duration-300 group-hover:text-[#FFF7E1] sm:mt-6 sm:text-2xl"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
                   {item.title}
                 </h3>
 
