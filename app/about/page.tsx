@@ -227,11 +227,7 @@ export default function AboutPage() {
         </p>
 
       </section>
-
-    </main>
-  );
-}
-{/* Statistics */}
+      {/* Statistics */}
 
 <section className="border-y border-[#262626] bg-[#111111]">
 
@@ -300,3 +296,7 @@ export default function AboutPage() {
   </div>
 
 </section>
+
+    </main>
+  );
+}
