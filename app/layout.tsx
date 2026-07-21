@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
-import { CartProvider } from "@/context/CartContext";
-import { AuthProvider } from "@/context/AuthContext";
+
 import "./globals.css";
-import { Toaster } from "sonner";
+
 import Navbar from "@/components/layout/Navbar";
+import { AuthProvider } from "@/context/AuthContext";
+import { CartProvider } from "@/context/CartContext";
+
+import { Toaster } from "sonner";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,28 +36,37 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${cormorant.variable}`}
+      suppressHydrationWarning
     >
       <body className="bg-[#0F0F0F] text-white antialiased">
+        <NextTopLoader
+          color="#D4AF37"
+          initialPosition={0.08}
+          crawl
+          crawlSpeed={200}
+          height={2}
+          speed={250}
+          easing="ease"
+          showSpinner={false}
+          shadow="0 0 10px #D4AF37, 0 0 5px #D4AF37"
+        />
 
-<AuthProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
 
-  <CartProvider>
+            <main className="min-h-screen">
+              {children}
+            </main>
 
-    <Navbar />
-
-    {children}
-
-    <Toaster
-      position="bottom-right"
-      richColors
-      theme="dark"
-    />
-
-  </CartProvider>
-
-</AuthProvider>
-
-</body>
+            <Toaster
+              position="bottom-right"
+              richColors
+              theme="dark"
+            />
+          </CartProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
