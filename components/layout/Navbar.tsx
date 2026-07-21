@@ -173,11 +173,13 @@ export default function Navbar() {
 
             ))}
 
-            <button className="premium-button mt-8 rounded-full border border-[#D4AF37] py-3 font-medium text-[#D4AF37] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black">
-
-              Login
-
-            </button>
+<Link
+  href="/login"
+  onClick={() => setMenuOpen(false)}
+  className="premium-button mt-8 flex items-center justify-center rounded-full border border-[#D4AF37] py-3 font-medium text-[#D4AF37] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black"
+>
+  Login
+</Link>
 
           </nav>
 
