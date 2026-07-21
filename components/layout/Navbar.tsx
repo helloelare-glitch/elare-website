@@ -3,12 +3,12 @@
   import { useState } from "react";
   import Logo from "../Logo";
   import Link from "next/link";
+  import MobileDrawer from "@/components/layout/MobileDrawer";
   import {
     Search,
     ShoppingBag,
     User,
     Menu,
-    X,
   } from "lucide-react";
   import { useCart } from "@/context/CartContext";
   import SearchModal from "@/components/search/SearchModal";
@@ -129,117 +129,11 @@
           </div>
 
         </header>
-
-        {/* Mobile Drawer */}
-
-        <div
-          className={`fixed inset-0 z-[999] bg-black/60 transition-opacity duration-300 md:hidden ${
-            menuOpen
-              ? "pointer-events-auto opacity-100"
-              : "pointer-events-none opacity-0"
-          }`}
-          onClick={() => setMenuOpen(false)}
-        >
-
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className={`absolute right-0 top-0 h-full w-72 border-l border-[#262626] bg-[#111111] p-8 transition-transform duration-300 ${
-              menuOpen
-                ? "translate-x-0"
-                : "translate-x-full"
-            }`}
-          >
-
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="premium-icon mb-10"
-            >
-              <X className="text-white" />
-            </button>
-
-            <nav className="flex flex-col gap-7">
-
-              {[
-                { name: "Home", href: "/" },
-                { name: "Shop", href: "/shop" },
-                { name: "About", href: "/about" },
-                { name: "Contact", href: "/contact" },
-              ].map((item) => (
-
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-lg text-white transition-all duration-300 hover:translate-x-2 hover:text-[#D4AF37]"
-                >
-                  {item.name}
-                </Link>
-
-              ))}
-
-{user ? (
-  <>
-    <div className="mt-8 rounded-xl border border-[#2B2B2B] bg-[#181818] p-4">
-      <p className="text-xs uppercase tracking-widest text-[#D4AF37]">
-        Signed in as
-      </p>
-
-      <p className="mt-2 truncate text-white">
-        {user.email}
-      </p>
-    </div>
-
-    <Link
-      href="/profile"
-      onClick={() => setMenuOpen(false)}
-      className="text-lg text-white transition hover:text-[#D4AF37]"
-    >
-      My Profile
-    </Link>
-
-    <Link
-      href="/orders"
-      onClick={() => setMenuOpen(false)}
-      className="text-lg text-white transition hover:text-[#D4AF37]"
-    >
-      My Orders
-    </Link>
-
-    <Link
-      href="/wishlist"
-      onClick={() => setMenuOpen(false)}
-      className="text-lg text-white transition hover:text-[#D4AF37]"
-    >
-      Wishlist
-    </Link>
-
-    <button
-      onClick={async () => {
-        await import("@/lib/supabase").then(({ supabase }) =>
-          supabase.auth.signOut()
-        );
-        setMenuOpen(false);
-      }}
-      className="premium-button mt-4 border border-red-500 py-3 text-red-400 hover:bg-red-500 hover:text-white"
-    >
-      Logout
-    </button>
-  </>
-) : (
-  <Link
-    href="/login"
-    onClick={() => setMenuOpen(false)}
-    className="premium-button mt-8 flex items-center justify-center rounded-full border border-[#D4AF37] py-3 font-medium text-[#D4AF37] transition-all duration-300 hover:bg-[#D4AF37] hover:text-black"
-  >
-    Login
-  </Link>
-)}
-
-            </nav>
-
-          </div>
-
-        </div>
+        <MobileDrawer
+          open={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          user={user}
+        />
 
         {/* Search Modal */}
 
