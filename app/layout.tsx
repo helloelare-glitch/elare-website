@@ -8,7 +8,6 @@ import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
 
 import { Toaster } from "sonner";
-import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,18 +38,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-[#0F0F0F] text-white antialiased">
-        <NextTopLoader
-          color="#D4AF37"
-          initialPosition={0.08}
-          crawl
-          crawlSpeed={200}
-          height={2}
-          speed={250}
-          easing="ease"
-          showSpinner={false}
-          shadow="0 0 10px #D4AF37, 0 0 5px #D4AF37"
-        />
-
         <AuthProvider>
           <CartProvider>
             <Navbar />
